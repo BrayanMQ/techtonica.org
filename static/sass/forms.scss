@@ -1,10 +1,8 @@
-/* 
-Form components and styling for Techtonica website
-  - general reusable form components 
-  - application-specific styling
-*/
+// Form components and styling for Techtonica website
 
 @import "settings";
+
+/* General form components and styling that can be reused across different forms */
 
 // Form wrapper and structure - used by multiple forms
 .form-wrapper {
@@ -118,43 +116,167 @@ span {
   color: rgba(0, 0, 0, 0.6);
 }
 
-// Responsive design for general forms
-@media (max-width: 900px) {
-  .form-wrapper {
-    .wrapper {
-      max-width: 75%;
-    }
+/* Square Payment System Styling */
 
-    #info-wrapper {
-      max-width: 100%;
-      min-width: none;
+.payment-form {
+  padding: 50px 0px 50px 0px;
+  width: 100%;
+  max-width: 1000px;
+  margin: 40px auto;
+  display: flex;
+  justify-content: center;
+  border-radius: 20px;
+  align-items: center;
+}
+
+#apple-pay-button {
+  height: 48px;
+  width: 100%;
+  display: inline-block;
+  -webkit-appearance: -apple-pay-button;
+  -apple-pay-button-type: plain;
+  -apple-pay-button-style: black;
+}
+
+#fast-checkout {
+  background: #fafafa;
+  color: black;
+
+  h3 {
+    color: $main-blue;
+  }
+
+  input {
+    border-radius: 6px;
+    position: relative;
+  }
+
+  .wrapper {
+    position: relative;
+  }
+
+  button {
+    width: 100%;
+    @include prefix(border-radius, 8px, webkit moz o);
+    color: $white;
+    display: inline-block;
+    background-color: $focal-orange;
+    text-align: center;
+    font-size: 1.5em;
+
+    &:hover {
+      background-color: $light-blue;
+      color: $white;
+      transition: 0.3s;
+    }
+  }
+
+  .border {
+    color: rgba(0, 0, 0, 0.55);
+    background: rgba(0, 0, 0, 0.1);
+    height: 1px;
+    width: 100%;
+    margin: 30px 0;
+    font-size: 12px;
+    line-height: 20px;
+    text-transform: uppercase;
+    position: relative;
+
+    span {
+      position: absolute;
+      top: -10px;
+      background: #fafafa;
+      padding: 0 10px;
+      left: calc(50% - 1em - 5px);
     }
   }
 }
 
-@media (max-width: 600px) {
-  .form-wrapper {
-    .wrapper {
-      max-width: 100%;
-    }
+#ach-wrapper {
+  display: none;
 
-    #info-wrapper {
-      max-width: 100%;
-      min-width: none;
-
-      > fieldset {
-        margin: 0px;
-        width: 100%;
-      }
-    }
+  input:first-of-type {
+    margin-bottom: 10px;
   }
 }
 
-/* Styles specific to app-form page (form.html)
-  - application page layout
-  - form container 
-  - application-specific
-*/
+#ach-message {
+  width: 100%;
+  margin-top: 11px;
+  margin-bottom: 11px;
+  font-size: 14px;
+  display: inline-block;
+  color: #bf0020;
+
+  &:empty:before {
+    content: "\200b";
+  }
+}
+
+#payment-flow-message {
+  width: 100%;
+  margin-top: 11px;
+  margin-bottom: 11px;
+  height: 100px;
+  display: block;
+
+  &.error {
+    color: #bf0020;
+    font-weight: bold;
+    margin-top: 10px;
+    font-size: 14px;
+    line-height: 1.4;
+  }
+
+  &.success {
+    color: #28a745;
+    font-weight: bold;
+    margin-top: 10px;
+  }
+}
+
+.wrapper {
+  max-width: 50%;
+  justify-content: center;
+}
+
+#card-container {
+  max-width: 387px;
+  margin: auto;
+}
+
+#payment-page {
+  padding: 1.5em;
+  background-color: $main-blue;
+
+  > h1,
+  > p {
+    max-width: 65%;
+    margin: auto;
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+}
+
+// Consulting page form elements
+#consulting-list {
+  list-style-position: inside;
+  border-style: solid;
+  border-color: #05556d;
+  border-width: thick;
+  padding: 3% 5% 3% 5%;
+}
+
+#consulting-bullet-items {
+  border-style: solid;
+  border-color: #05556d;
+  border-radius: 5px;
+  padding: 1%;
+  margin: 1%;
+  list-style-type: none;
+}
+
+/* Styles specific to app-form page (form.html) */
 
 // Application page layout - ONLY used on application form
 .application-page {
@@ -300,6 +422,53 @@ span {
     border-radius: 8px;
     background-color: rgba(191, 0, 32, 0.05);
     margin-bottom: 1em;
+  }
+}
+
+/* Form responsive design */
+
+@media (max-width: 900px) {
+  .form-wrapper {
+    .wrapper {
+      max-width: 75%;
+    }
+
+    #info-wrapper {
+      max-width: 100%;
+      min-width: none;
+    }
+  }
+
+  .wrapper {
+    max-width: 75%;
+  }
+}
+
+@media (max-width: 600px) {
+  .form-wrapper {
+    .wrapper {
+      max-width: 100%;
+    }
+
+    #info-wrapper {
+      max-width: 100%;
+      min-width: none;
+
+      > fieldset {
+        margin: 0px;
+        width: 100%;
+      }
+    }
+  }
+
+  .payment-form {
+    margin: 0px;
+    padding: 30px;
+    box-sizing: border-box;
+  }
+
+  .wrapper {
+    max-width: 100%;
   }
 }
 
